@@ -1,7 +1,7 @@
 describe user('test_user') do
   it { should exist }
   its('uid') { should eq 9001 }
-  its('groups') { should eq %w( test_user testgroup nfsgroup ) }
+  its('groups') { should include('testgroup', 'nfsgroup') }
   its('shell') { should eq '/bin/bash' }
 end
 
@@ -18,7 +18,7 @@ end
 describe user('test_user_keys_from_url') do
   it { should exist }
   its('uid') { should eq 9002 }
-  its('groups') { should eq %w( test_user_keys_from_url testgroup nfsgroup ) }
+  its('groups') { should include('testgroup', 'nfsgroup') }
   its('shell') { should eq '/bin/bash' }
 end
 
